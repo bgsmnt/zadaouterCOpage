@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckOut Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: rgb(238, 174, 202);
+            background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: rgb(238, 174, 202);
+            background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: calc(100% - 10px);
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .form-group input[type="radio"]+label {
+            display: inline;
+            font-weight: normal;
+        }
+
+        .total {
+            font-size: 1.2em;
+            margin-top: 20px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* mobile */
+        @media (max-width: 450px) {
+            html {
+                
+                    width: calc(100% - 10px);
+                    padding: 8px;
+                    box-sizing: border-box;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    font-size: 75%;
+                
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>CheckOut Page</h1>
+        <h2>Pesan Produk disini ya, pastikan juga jangan sampai salah isi supaya gak ada drama Pengiriman🥰💐.</h2>
+        <form id="orderForm">
+            <div class="form-group">
+                <label for="name">Nama Pembeli</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Nomor Telepon</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="province">Provinsi</label>
+                <select id="province" name="province" required>
+                    <option value="">Pilih Provinsi</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="city">Kabupaten/Kota</label>
+                <select id="city" name="city" required>
+                    <option value="">Pilih Kabupaten/Kota</option>
+                </select>
+            </div>
+            <!-- <div class="form-group">
+                <label for="district">Kecamatan</label>
+                <select id="district" name="district" required>
+                    <option value="">Pilih Kecamatan</option>
+                </select>
+            </div> -->
+            <div class="form-group">
+                <label for="address">Alamat</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="color">Varian Warna</label>
+                <select id="color" name="color" required>
+                    <option value="">Pilih Warna</option>
+                    <option value="Merah">Bata</option>
+                    <option value="Biru">Lime</option>
+                    <option value="Hijau">Mint</option>
+                    <option value="Hitam">Milo</option>
+                    <option value="Putih">Navy</option>
+                    <option value="Putih">Army</option>
+                    <option value="Putih">Maroon</option>
+                    <option value="Putih">Abu</option>
+                    <option value="Putih">Lilac</option>
+                    <option value="Putih">Wardah</option>
+                    <option value="Putih">Moca</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="size">Ukuran</label>
+                <select id="size" name="size" required>
+                    <option value="All Size">All Size</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="paymentMethod">Metode Pembayaran</label>
+                <input type="radio" id="bankTransfer" name="paymentMethod" value="Bank Transfer" required>
+                <label for="bankTransfer">Transfer Bank (BCA a/n 5915020809 SUTARNO)</label>
+                <input type="radio" id="cod" name="paymentMethod" value="COD">
+                <label for="cod">Cash on Delivery (COD)</label>
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Harga Produk</label>
+                <input type="number" id="productPrice" name="productPrice" value="69999" readonly>
+            </div>
+            <div class="form-group">
+                <label for="shippingCost">Ongkos Kirim</label>
+                <input type="number" id="shippingCost" name="shippingCost" value="0" readonly>
+            </div>
+            <div class="total">
+                Total Bayar: Rp <span id="totalPrice">0</span>
+            </div>
+            <button type="button" id="pesanSekarang" class="btn">Pesan Sekarang</button>
+        </form>
+    </div>
+
+    <script>
+        const provinceSelect = document.getElementById('province');
+        const citySelect = document.getElementById('city');
+        const districtSelect = document.getElementById('district');
+        const productPriceInput = document.getElementById('productPrice');
+        const shippingCostInput = document.getElementById('shippingCost');
+        const totalPriceSpan = document.getElementById('totalPrice');
+
+        // Fetch data provinsi
+        fetch('get_provinces.php')
+            .then(response => response.json())
+            .then(provinces => {
+                // Populasi dropdown provinsi
+                provinces.rajaongkir.results.forEach(province => {
+                    const option = document.createElement('option');
+                    option.value = province.province_id;
+                    option.textContent = province.province;
+                    provinceSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching provinces:', error));
+
+        // Function untuk mengambil data kabupaten/kota berdasarkan id provinsi
+        function fetchCitiesByProvinceId(provinceId) {
+            fetch(`get_cities.php?province_id=${provinceId}`)
+                .then(response => response.json())
+                .then(cities => {
+                    // Bersihkan dropdown kabupaten/kota
+                    citySelect.innerHTML = '<option value="">Pilih Kabupaten/Kota</option>';
+                    // Populasi dropdown kabupaten/kota
+                    cities.rajaongkir.results.forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city.city_id;
+                        option.textContent = city.city_name;
+                        citySelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error(`Error fetching cities for province ${provinceId}:`, error));
+        }
+
+        // Event listener untuk memperbarui dropdown kabupaten/kota saat provinsi dipilih
+        provinceSelect.addEventListener('change', () => {
+            const selectedProvince = provinceSelect.value;
+            citySelect.innerHTML = '<option value="">Pilih Kabupaten/Kota</option>'; // Bersihkan pilihan sebelumnya
+            // districtSelect.innerHTML = '<option value="">Pilih Kecamatan</option>'; // Bersihkan pilihan sebelumnya
+            if (selectedProvince) {
+                fetchCitiesByProvinceId(selectedProvince);
+            }
+        });
+
+        // Event listener untuk memperbarui biaya ongkir saat kabupaten/kota dipilih
+        citySelect.addEventListener('change', updateShippingCost);
+
+        function updateShippingCost() {
+            const selectedCity = citySelect.value;
+            const weight = 1000; // Berat dalam gram
+            const courier = 'jne'; // Contoh kurir
+
+            if (selectedCity) {
+                fetch(`get_cost.php?origin=49&destination=${selectedCity}&weight=${weight}&courier=${courier}`)
+                    .then(response => response.json())
+                    .then(costs => {
+                        const shippingCost = costs.rajaongkir.results[0].costs[0].cost[0].value;
+                        shippingCostInput.value = shippingCost;
+                        updateTotalPrice();
+                    })
+                    .catch(error => console.error('Error fetching shipping cost:', error));
+            }
+        }
+
+        function updateTotalPrice() {
+            const productPrice = parseInt(productPriceInput.value, 10);
+            const shippingCost = parseInt(shippingCostInput.value, 10);
+            const totalPrice = productPrice + shippingCost;
+            totalPriceSpan.textContent = totalPrice.toLocaleString();
+        }
+
+        document.getElementById('pesanSekarang').addEventListener('click', () => {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const province = provinceSelect.options[provinceSelect.selectedIndex].text;
+            const city = citySelect.options[citySelect.selectedIndex].text;
+            // const district = districtSelect.options[districtSelect.selectedIndex].text;
+            const address = document.getElementById('address').value;
+            const color = document.getElementById('color').value;
+            const size = document.getElementById('size').value;
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            const productPrice = productPriceInput.value;
+            const shippingCost = shippingCostInput.value;
+            const totalPrice = parseInt(productPrice) + parseInt(shippingCost);
+            const productName = "Zada Outer";
+
+            const whatsappMessage = `Halo, saya ingin memesan produk ${productName} dengan detail sebagai berikut:\n\nNama: ${name}\nNomor Telepon: ${phone}\nAlamat: ${address}, ${city}, ${province}\nVarian Warna: ${color}\nUkuran: ${size}\nMetode Pembayaran: ${paymentMethod}\nHarga Produk: Rp${parseInt(productPrice).toLocaleString()}\nOngkos Kirim: Rp${parseInt(shippingCost).toLocaleString()}\nTotal Bayar: Rp${totalPrice.toLocaleString()}`;
+
+            const whatsappUrl = `https://wa.me/6285228600086?text=${encodeURIComponent(whatsappMessage)}`;
+
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+</body>
+
+</html>
